@@ -1,0 +1,26 @@
+dataset:
+  script_path: ../src/datasets/ohio.py
+  xml_path: ../data/OhioT1DM/2018/train/563-ws-training.xml
+  nb_past_steps: 12
+  param_nb_future_steps: [1]
+  train_fraction: 0.6
+  valid_fraction: 0.2
+  test_fraction: 0.2
+  scale: 0.01
+model:
+  script_path: ../src/models/lstm_experiment_keras.py
+  nb_lstm_states: 256
+  activation_function: exp
+optimizer:
+  script_path: ../src/optimizers/adam_keras.py
+  learning_rate: 1e-3
+loss_function:
+  script_path: ../src/loss_functions/nll_keras.py
+train:
+  script_path: ../src/train/train_keras.py
+  artifacts_path: ../outputs/563_final_experiment/
+  batch_size: 1024
+  epochs: 1000
+  patience: 200
+  shuffle: True
+  param_seed: [0]
